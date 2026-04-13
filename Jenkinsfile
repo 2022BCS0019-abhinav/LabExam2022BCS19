@@ -6,9 +6,8 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 sh '''
-                apt-get update
-                apt-get install -y python3 python3-pip
-                pip3 install -r requirements.txt
+                pip install --upgrade pip
+                pip install -r requirements.txt
                 '''
             }
         }
@@ -16,7 +15,7 @@ pipeline {
         stage('Train Model') {
             steps {
                 sh '''
-                python3 train.py
+                python train.py
                 '''
             }
         }
@@ -24,7 +23,6 @@ pipeline {
         stage('Evaluate Model') {
             steps {
                 sh '''
-                echo "Model evaluation completed. Check metrics.json"
                 cat outputs/metrics.json
                 '''
             }
