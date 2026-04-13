@@ -6,8 +6,7 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 sh '''
-                pip install --upgrade pip
-                pip install -r requirements.txt
+                pip3 install -r requirements.txt
                 '''
             }
         }
@@ -15,7 +14,7 @@ pipeline {
         stage('Train Model') {
             steps {
                 sh '''
-                python train.py
+                python3 train.py
                 '''
             }
         }
@@ -23,6 +22,9 @@ pipeline {
         stage('Evaluate Model') {
             steps {
                 sh '''
+                echo "Name: Abhinav Bhagwat"
+                echo "Roll No: 2022BCS0019"
+                echo "----- Model Metrics -----"
                 cat outputs/metrics.json
                 '''
             }
