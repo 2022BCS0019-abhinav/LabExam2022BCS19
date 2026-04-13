@@ -6,7 +6,7 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 sh '''
-                pip3 install -r requirements.txt
+                pip3 install --break-system-packages -r requirements.txt
                 '''
             }
         }
